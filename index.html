@@ -3,27 +3,59 @@
     <head>
         <title>광교의 명문 초중고</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function NightDayHandler(self) {
+                var target = document.querySelector('body');
+                if (this.value === 'Night') {
+                    target.style.backgroundColor = 'black';
+                    target.style.color = 'white';
+                    this.value = 'Day'
+        
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while (i < alist.length) {
+                        alist[i].style.color = 'powderblue';
+                        i = i + 1;
+                    }
+                }
+                else {
+                    target.style.backgroundColor = 'white';
+                    target.style.color = 'black';
+                    this.value = 'Night'
+        
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while (i < alist.length) {
+                        alist[i].style.color = 'blue';
+                        i = i + 1;
+                    }
+                }
+            }
+        </script>
         <style>
             body {
                 margin: 0;
+                transition: background-color 0.5s, color 0.5s;
             }
             a {
                 text-decoration: none;
             }
-            
             ul.no-bullet {
                 list-style-type: none;
             }
             h1 {
+                position: absolute;
+                left: 30%; 
+                height: 4%;
                 text-align: center;
                 font-size: 300%;
-                border-bottom: 1px solid gray;
                 margin: 0;
-                padding: 35px;
+                padding-top: 35px;
             }
             #grid ul {
                 border-right: 1px solid gray;
-                width: 250px;
+                border-top: 1px solid gray;
                 padding: 20px;
                 margin: 0;
                 line-height: 2; 
@@ -35,14 +67,28 @@
             }
             #article {
                 padding-left: 10px;
+                border-top:  1px solid gray;
             }
             #youtube {
                 padding-left: 20px;
             }
-</style>
+            #night_day {
+                border-radius: 50%;
+                width: 75px;
+                height: 75px;
+                font-size: 0.75em;
+                margin: 10%;
+            }
+    </style>
     </head>
     <body>
-        <h1><strong>"The School"</strong></h1>
+        <div v id="grid">
+            <input id="night_day" type="button" value="Night" onclick="
+            NightDayHandler(this);
+            ">
+            <h1><strong>"The School"</strong></h1>
+        </div>
+
         <div id="grid">
             <ul class="no-bullet">
                 <li><strong><a href="index.html">광교 "수원의 강남"</a></strong></li>
